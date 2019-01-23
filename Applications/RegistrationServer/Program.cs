@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Steeltoe.Extensions.Configuration.CloudFoundry;
+using Pivotal.Extensions.Configuration;
 
 namespace RegistrationServer
 {
@@ -19,7 +19,7 @@ namespace RegistrationServer
             WebHost.CreateDefaultBuilder(args)
                 .UseCloudFoundryHosting()
                 .UseConfiguration(new ConfigurationBuilder().AddCommandLine(args).Build())
-                .AddCloudFoundry()
+                .AddConfigServer()
                 .UseStartup<Startup>();
     }
 }
