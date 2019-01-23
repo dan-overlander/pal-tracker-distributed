@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Pivotal.Extensions.Configuration;
+using Pivotal.Extensions.Configuration.ConfigServer;
 
 namespace TimesheetsServer
 {
@@ -17,8 +17,8 @@ namespace TimesheetsServer
 
         public static IWebHostBuilder WebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseCloudFoundryHosting()
                 .UseConfiguration(new ConfigurationBuilder().AddCommandLine(args).Build())
+                .UseCloudFoundryHosting()
                 .AddConfigServer()
                 .UseStartup<Startup>();
     }
